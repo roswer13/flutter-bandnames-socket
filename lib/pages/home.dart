@@ -95,7 +95,9 @@ class _HomePageState extends State<HomePage> {
       dataMap.putIfAbsent(band.name, () => band.votes.toDouble());
     }
 
-    return PieChart(dataMap: dataMap);
+    return dataMap.isEmpty
+        ? Container()
+        : SizedBox(height: 200, child: PieChart(dataMap: dataMap));
   }
 
   Widget _bandTile(Band band) {
